@@ -1,0 +1,32 @@
+# vi: ft=yaml.docker-compose
+---
+version: '3'
+services:
+  lemaitre:
+    image: ghcr.io/reproducible-bioinformatics/lemaitre:1.2.5
+    volumes:
+      - personal-tools:/tools/
+    environment:
+      - TOOL_DIR=/tools/
+      - TOOL_CONF=/tools/tool_conf.xml
+    ports:
+      - "8081:8000/tcp"
+    restart: on-failure
+  galaxy:
+    image: quay.io/bgruening/galaxy
+    ports:
+      - "8080:80/tcp"
+      - "8021:21/tcp"
+      - "8022:22/tcp"
+    restart: on-failure
+    volumes:
+      - galaxy-storage:/export/
+      - personal-tools:/local_tools/
+    environment:
+      - GALAXY_CONFIG_TOOL_CONFIG_FILE=/etc/galaxy/tool_conf.xml,/local_tools/my_tools.xml
+      - GALAXY_CONFIG_BRAND="Reproducible Bioinformatics Galaxy"
+      - BARE=True
+
+volumes:
+  personal-tools:
+  galaxy-storage:
