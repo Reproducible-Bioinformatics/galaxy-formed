@@ -5,10 +5,10 @@ services:
   lemaitre:
     image: ghcr.io/reproducible-bioinformatics/lemaitre:1.2.5
     volumes:
-      - personal-tools:/tools/
+      - personal-tools:/local_tools/
     environment:
-      - TOOL_DIR=/tools/
-      - TOOL_CONF=/tools/tool_conf.xml
+      - TOOL_DIR=/local_tools/
+      - TOOL_CONF=/local_tools/my_tools.xml
     ports:
       - "8081:8000/tcp"
     restart: on-failure
