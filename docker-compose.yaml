@@ -3,7 +3,7 @@
 version: '3'
 services:
   lemaitre:
-    image: ghcr.io/reproducible-bioinformatics/lemaitre:1.2.5
+    image: ghcr.io/reproducible-bioinformatics/lemaitre:1.2.6
     volumes:
       - personal-tools:/local_tools/
     environment:
