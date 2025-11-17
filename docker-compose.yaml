@@ -13,6 +13,7 @@ services:
       - "8081:8000/tcp"
     restart: on-failure
   galaxy:
+    privileged: true
     image: quay.io/bgruening/galaxy
     ports:
       - "8080:80/tcp"
