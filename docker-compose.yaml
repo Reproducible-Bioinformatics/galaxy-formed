@@ -26,6 +26,7 @@ services:
     environment:
       - GALAXY_CONFIG_TOOL_CONFIG_FILE=/local_tools/my_tools.xml
       - GALAXY_CONFIG_BRAND=Reproducible Bioinformatics Galaxy
+      - GALAXY_DOCKER_ENABLED=True
 
 volumes:
   personal-tools:
